@@ -1,12 +1,10 @@
 /// <reference types="Cypress" />
 
 describe('Billing order test', function() {
-  before(function () {
-    cy.fixture('billing_orders.json').as('orders')
-  })
+  const orders = require('../fixtures/billing_orders.json')
 
-  it('Send billing order with all required parameters', function() {
-    cy.get('@orders').each( (order) => {
+  orders.forEach((order) => {
+    it('Send billing order with all required parameters', () => {
       cy.visit('/billing-order-form/')
       cy.get("input[type='password']").type('Testing')
       cy.contains("Submit").click()
