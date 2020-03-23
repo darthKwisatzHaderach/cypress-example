@@ -4,7 +4,7 @@ describe('Billing order test', function() {
   const orders = require('../fixtures/billing_orders.json')
 
   orders.forEach((order) => {
-    it('Send billing order with all required parameters', () => {
+    it(`Send billing order. ${order.test_name}`, () => {
       cy.visit('/billing-order-form/')
       cy.get("input[type='password']").type('Testing')
       cy.contains("Submit").click()

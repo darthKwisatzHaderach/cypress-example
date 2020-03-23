@@ -1,5 +1,6 @@
 [
     {
+        "test_name": "Positive: simple last name",
         "first_name": "John",
         "last_name": "Smith",
         "email": "fake-email1@mail.com",
@@ -12,8 +13,9 @@
         "comment": "Comment for billing order."
     },
     {
+        "test_name": "Positive: last name with apostrophe",
         "first_name": "Will",
-        "last_name": "Smith",
+        "last_name": "O'Brien",
         "email": "fake-email2@mail.com",
         "phone": "88009000333",
         "address_line1": "Address line 1",
@@ -21,6 +23,45 @@
         "city": "New York",
         "state": "New York",
         "zip_code": "44412",
+        "comment": "Comment for billing order."
+    },
+    {
+        "test_name": "Positive: last name with hypen",
+        "first_name": "Will",
+        "last_name": "Smith-Klein",
+        "email": "fake-email2@mail.com",
+        "phone": "88009000333",
+        "address_line1": "Address line 1",
+        "address_line2": "Address line 2",
+        "city": "New York",
+        "state": "New York",
+        "zip_code": "44412",
+        "comment": "Comment for billing order."
+    },
+    {
+        "test_name": "Positive: short last name",
+        "first_name": "Will",
+        "last_name": "Li",
+        "email": "fake-email2@mail.com",
+        "phone": "88009000333",
+        "address_line1": "Address line 1",
+        "address_line2": "Address line 2",
+        "city": "New York",
+        "state": "New York",
+        "zip_code": "44412",
+        "comment": "Comment for billing order."
+    },
+    {
+        "test_name": "Positive: nine digits zip code",
+        "first_name": "Will",
+        "last_name": "Li",
+        "email": "fake-email2@mail.com",
+        "phone": "88009000333",
+        "address_line1": "Address line 1",
+        "address_line2": "Address line 2",
+        "city": "New York",
+        "state": "New York",
+        "zip_code": "44412123",
         "comment": "Comment for billing order."
     }
 ]
