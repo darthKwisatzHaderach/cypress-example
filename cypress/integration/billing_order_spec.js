@@ -1,16 +1,24 @@
 /// <reference types="Cypress" />
+import AuthorizationPage from '../pages/authorization_page'
+import BillingOrderPage from '../pages/billing_order_page';
 
 describe('Billing order test', function() {
   const orders = require('../fixtures/billing_orders.json')
 
   orders.forEach((order) => {
     it(`Send billing order. ${order.test_name}`, () => {
-      cy.visit('/billing-order-form/')
-      cy.authorize("Testing")
-      cy.sendBillingOrder(order)
-      cy.get("div[id='wpforms-confirmation-24']")
-        .children("p")
-          .should('have.text', 'Thanks for contacting us! We will be in touch with you shortly.')
+      const authorization_page = new AuthorizationPage()
+      const billing_order_page = new BillingOrderPage()
+      
+      authorization_page
+        .visit('/billing-order-form/')
+        .authorize('Testing')
+
+      billing_order_page.sendOrder(order)
+
+      billing_order_page
+        .getSuccessMessage()
+        .should('have.text', 'Thanks for contacting us! We will be in touch with you shortly.')
     })
   })
 })
