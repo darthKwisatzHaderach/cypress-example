@@ -1,95 +1,71 @@
 class BillingOrderPage {
-    fillFirstName(first_name) {
-        cy.get("input[name='wpforms[fields][0][first]']").type(first_name)
-
-        return this
+    getFirstNameField() {
+        return cy.get("input[name='wpforms[fields][0][first]']");
     }
     
-    fillLastName(last_name) {
-        cy.get("input[name='wpforms[fields][0][last]']").type(last_name)
-
-        return this
+    getLastNameField() {
+        return cy.get("input[name='wpforms[fields][0][last]']");
     }
 
-    fillEmail(email) {
-        cy.get("input[name='wpforms[fields][1]']").type(email)
-
-        return this
+    getEmailField() {
+        return cy.get("input[name='wpforms[fields][1]']");
     }
 
-    fillPhone(phone) {
-        cy.get("input[name='wpforms[fields][2]']").type(phone)
-
-        return this
+    getPhoneField() {
+        return cy.get("input[name='wpforms[fields][2]']");
     }
 
-    fillAddressLine1(address_line1) {
-        cy.get("input[name='wpforms[fields][3][address1]']").type(address_line1)
-
-        return this
+    getAddressLine1Field() {
+        return cy.get("input[name='wpforms[fields][3][address1]']");
     }
 
-    fillAddressLine2(address_line2) {
-        cy.get("input[name='wpforms[fields][3][address2]']").type(address_line2)
-
-        return this
+    getAddressLine2Field() {
+        return cy.get("input[name='wpforms[fields][3][address2]']");
     }
 
-    fillCity(city) {
-        cy.get("input[name='wpforms[fields][3][city]']").type(city)
-
-        return this
+    getCityField() {
+        return cy.get("input[name='wpforms[fields][3][city]']");
     }
 
-    fillZipCode(zip_code) {
-        cy.get("input[name='wpforms[fields][3][postal]']").type(zip_code)
-
-        return this
+    getZipCodeField() {
+        return cy.get("input[name='wpforms[fields][3][postal]']");
     }
 
-    selectState(state) {
-        cy.get("select[name='wpforms[fields][3][state]']").select(state)
-
-        return this
+    getStateSelect() {
+        return cy.get("select[name='wpforms[fields][3][state]']");
     }
 
-    fillComment(comment) {
-        cy.get("textarea[name='wpforms[fields][6]']").type(comment)
-
-        return this
+    getCommentField() {
+        return cy.get("textarea[name='wpforms[fields][6]']");
     }
 
-    selectItem(item) {
-        cy.contains(`${item}`).click()
-
-        return this
+    getItemLabel(item) {
+        return cy.contains(`${item}`);
     }
 
-    clickSubmit() {
-        cy.get("button[name='wpforms[submit]']").click()
-
-        return this
+    getSubmitButton() {
+        return cy.get("button[name='wpforms[submit]']");
     }
 
     sendOrder(order) {
-        this.fillFirstName(order.first_name)
-        this.fillLastName(order.last_name)
-        this.fillEmail(order.email)
-        this.fillPhone(order.phone)
-        this.fillAddressLine1(order.address_line1)
-        this.fillAddressLine2(order.address_line2)
-        this.fillCity(order.city)
-        this.fillZipCode(order.zip_code)
-        this.selectState(order.state)
-        this.selectItem(order.item)
-        this.fillComment(order.comment)
-        this.clickSubmit()
+        this.getFirstNameField().type(order.first_name);
+        this.getLastNameField().type(order.last_name);
+        this.getEmailField().type(order.email);
+        this.getPhoneField().type(order.phone);
+        this.getAddressLine1Field().type(order.address_line1);
+        this.getAddressLine2Field().type(order.address_line2);
+        this.getCityField().type(order.city);
+        this.getZipCodeField().type(order.zip_code);
+        this.getStateSelect().select(order.state);
+        this.getItemLabel(order.item).click();
+        this.getCommentField().type(order.comment);
+        this.getSubmitButton().click();
 
-        return this
+        return this;
     }
 
     getSuccessMessage() {
-        return cy.get("div[id='wpforms-confirmation-24']").children("p")
+        return cy.get("div[id='wpforms-confirmation-24']").children("p");
     }
 }
   
