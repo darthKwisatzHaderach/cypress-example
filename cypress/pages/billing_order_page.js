@@ -1,52 +1,30 @@
 class BillingOrderPage {
-    getFirstNameField() {
-        return cy.get("input[name='wpforms[fields][0][first]']");
-    }
+    getFirstNameField() { return cy.get("input[name='wpforms[fields][0][first]']"); }
     
-    getLastNameField() {
-        return cy.get("input[name='wpforms[fields][0][last]']");
-    }
+    getLastNameField() { return cy.get("input[name='wpforms[fields][0][last]']"); }
 
-    getEmailField() {
-        return cy.get("input[name='wpforms[fields][1]']");
-    }
+    getEmailField() { return cy.get("input[name='wpforms[fields][1]']"); }
 
-    getPhoneField() {
-        return cy.get("input[name='wpforms[fields][2]']");
-    }
+    getPhoneField() { return cy.get("input[name='wpforms[fields][2]']"); }
 
-    getAddressLine1Field() {
-        return cy.get("input[name='wpforms[fields][3][address1]']");
-    }
+    getAddressLine1Field() { return cy.get("input[name='wpforms[fields][3][address1]']"); }
 
-    getAddressLine2Field() {
-        return cy.get("input[name='wpforms[fields][3][address2]']");
-    }
+    getAddressLine2Field() { return cy.get("input[name='wpforms[fields][3][address2]']"); }
 
-    getCityField() {
-        return cy.get("input[name='wpforms[fields][3][city]']");
-    }
+    getCityField() { return cy.get("input[name='wpforms[fields][3][city]']"); }
 
-    getZipCodeField() {
-        return cy.get("input[name='wpforms[fields][3][postal]']");
-    }
+    getZipCodeField() { return cy.get("input[name='wpforms[fields][3][postal]']"); }
 
-    getStateSelect() {
-        return cy.get("select[name='wpforms[fields][3][state]']");
-    }
+    getStateSelect() { return cy.get("select[name='wpforms[fields][3][state]']"); }
 
-    getCommentField() {
-        return cy.get("textarea[name='wpforms[fields][6]']");
-    }
+    getCommentField() { return cy.get("textarea[name='wpforms[fields][6]']"); }
 
-    getItemLabel(item) {
-        return cy.contains(`${item}`);
-    }
+    getItemLabel(item) { return cy.contains(`${item}`); }
 
-    getSubmitButton() {
-        return cy.get("button[name='wpforms[submit]']");
-    }
+    getSubmitButton() { return cy.get("button[name='wpforms[submit]']"); }
 
+    getSuccessMessage() { return cy.get("div[id='wpforms-confirmation-24']").children("p"); }
+    
     sendOrder(order) {
         this.getFirstNameField().type(order.first_name);
         this.getLastNameField().type(order.last_name);
@@ -62,10 +40,6 @@ class BillingOrderPage {
         this.getSubmitButton().click();
 
         return this;
-    }
-
-    getSuccessMessage() {
-        return cy.get("div[id='wpforms-confirmation-24']").children("p");
     }
 }
   
