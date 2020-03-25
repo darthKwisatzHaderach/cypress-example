@@ -1,4 +1,12 @@
 {
   "baseUrl": "http://qaauto.co.nz/",
-  "projectId": "21pjt5"
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "timestamp": "mmddyyyy_HHMMss"
+  },
+  "screenshotsFolder": "cypress/reports/assets"
 }

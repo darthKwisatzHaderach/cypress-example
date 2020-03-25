@@ -1,5 +1,22 @@
 {
   "scripts": {
-    "cypress:open": "cypress open"
+    "cypress:open":"clean-reports",  
+    "cypress:run": "cypress run",
+    "clean:reports": "rd /s /q cypress\\reports && mkdir cypress\\reports",
+    "clean:results": "rd /s /q cypress\\results && mkdir cypress\\results",
+    "pretest": "npm run clean:reports && npm run clean:results",
+    "combine-reports": "mochawesome-merge \"cypress/results/*.json\" > cypress/reports/report.json",
+    "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "test" : "npm run cypress:run || npm run posttest"
+  },
+  "dependencies": {
+    "cypress": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1",
+    "mochawesome": "^5.0.0",
+    "mochawesome-merge": "^4.0.3",
+    "mochawesome-report-generator": "^4.1.0"
   }
 }
