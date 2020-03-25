@@ -8,7 +8,10 @@
     "combine-reports": "mochawesome-merge \"cypress/results/*.json\" > cypress/reports/report.json",
     "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
     "posttest": "npm run combine-reports && npm run generate-report",
-    "test" : "npm run cypress:run || npm run posttest"
+    "test" : "npm run cypress:run || npm run posttest",
+    "test:chrome": "npm run clean:reports && npm run clean:results && cypress run --browser chrome || npm run combine-reports && npm run generate-report",
+    "test:firefox": "npm run clean:reports && npm run clean:results && cypress run --browser firefox || npm run combine-reports && npm run generate-report",
+    "test:edge": "npm run clean:reports && npm run clean:results && cypress run --browser edge || npm run combine-reports && npm run generate-report"
   },
   "dependencies": {
     "cypress": "^4.2.0"
