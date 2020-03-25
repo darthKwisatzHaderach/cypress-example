@@ -2,8 +2,8 @@
   "scripts": {
     "cypress:open":"clean-reports",  
     "cypress:run": "cypress run",
-    "clean:reports": "rd /s /q cypress\\reports && mkdir cypress\\reports",
-    "clean:results": "rd /s /q cypress\\results && mkdir cypress\\results",
+    "clean:reports": "(if exist cypress\\reports rd /s /q cypress\\reports) && mkdir cypress\\reports",
+    "clean:results": "(if exist cypress\\results rd /s /q cypress\\results) && mkdir cypress\\results",
     "pretest": "npm run clean:reports && npm run clean:results",
     "combine-reports": "mochawesome-merge \"cypress/results/*.json\" > cypress/reports/report.json",
     "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
